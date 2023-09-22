@@ -1,0 +1,11 @@
+import cv2 as cv
+from random import randrange as r
+traindata=cv.CascadeClassifier("haarcascade_frontalface_default.xml")
+img=cv.imread('4.jpg')
+grayimg=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+facecoordinates=traindata.detectMultiScale(grayimg)
+for x,y,w,h in facecoordinates:
+   cv.rectangle(img,(x,y),(x+w,y+h),(r(0,256),r(0,256),r(0,256)),2)
+cv.imshow('face',img)
+cv.waitKey(0)
+print("end of program")
